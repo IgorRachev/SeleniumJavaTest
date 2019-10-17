@@ -1,0 +1,5 @@
+Value a; Value b; expected value;
+
+5426;5426;1;
+12;6;2;
+-50;10;-5;
