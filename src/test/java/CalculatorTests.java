@@ -6,6 +6,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.provider.ValueSource;
+import org.testng.internal.collections.Ints;
 
 
 public class CalculatorTests {
@@ -34,10 +36,19 @@ public class CalculatorTests {
 
     @ParameterizedTest
     @DisplayName("test of multy")
-    @EnumSource(value = Edata.class, names = {"data1", "data2"})
-    void testMultyEnum(EdataCal edata) {
-
-        Assertions.assertEquals(cal.multiply(edata.getA(),edata.getB()),edata.getMulty());
+    @EnumSource(value = EdataCal.class, names = {"data1", "data2"})
+    void testMultyEnum(EdataCal edataCal) {
+        Assertions.assertEquals(cal.multiply(edataCal.getA(),edataCal.getB()),edataCal.getMulty());
     }
+
+    @ParameterizedTest
+    @DisplayName("Test of sqrt")
+    @ValueSource (ints = {12, 6, 10})
+    public void testSqrt(int testNumber){
+        Assertions.assertEquals(cal.squareRoot(testNumber), Math.sqrt(testNumber));
+    }
+
+    @ParameterizedTest
+    @DisplayName("Test of minus")
 
 }
