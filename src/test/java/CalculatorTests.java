@@ -1,13 +1,12 @@
+import calculator.Calculator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.testng.internal.collections.Ints;
 
 
 public class CalculatorTests {
@@ -50,5 +49,8 @@ public class CalculatorTests {
 
     @ParameterizedTest
     @DisplayName("Test of minus")
-
+    @CsvSource(value = {"4;5", "-5;-6", "-10;9", "0;16"}, delimiter = ';')
+    public void testMinus(int a, int b) {
+        Assertions.assertEquals(cal.minus(a, b), (a-b));
+    }
 }
